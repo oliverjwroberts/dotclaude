@@ -1,0 +1,25 @@
+{
+  "name": "oliverjwroberts-dotclaude",
+  "description": "Oliver Roberts' personal Claude Code skills and subagents for engineering workflows.",
+  "owner": {
+    "name": "Oliver Roberts",
+    "url": "https://github.com/oliverjwroberts"
+  },
+  "plugins": [
+    {
+      "name": "oliverjwroberts-dotclaude",
+      "source": "./",
+      "version": "0.1.0",
+      "description": "Building-block skills and subagents for settling decisions, mapping a domain, specifying and ticketing work, implementing it, and reviewing it on three axes.",
+      "category": "engineering",
+      "keywords": [
+        "engineering",
+        "skills",
+        "subagents",
+        "review",
+        "specs",
+        "writing"
+      ]
+    }
+  ]
+}

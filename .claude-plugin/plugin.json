@@ -1,0 +1,35 @@
+{
+  "name": "oliverjwroberts-dotclaude",
+  "version": "0.1.0",
+  "description": "Building-block skills and subagents for settling decisions, mapping a domain, specifying and ticketing work, implementing it, and reviewing it on three axes.",
+  "author": {
+    "name": "Oliver Roberts",
+    "url": "https://github.com/oliverjwroberts"
+  },
+  "homepage": "https://github.com/oliverjwroberts/dotclaude",
+  "repository": "https://github.com/oliverjwroberts/dotclaude",
+  "license": "MIT",
+  "keywords": [
+    "engineering",
+    "skills",
+    "subagents",
+    "review",
+    "specs",
+    "writing"
+  ],
+  "skills": [
+    "./skills/authoring-skill",
+    "./skills/settle",
+    "./skills/map-domain",
+    "./skills/record-decision",
+    "./skills/write-spec",
+    "./skills/split-tickets",
+    "./skills/implement",
+    "./skills/diagnose",
+    "./skills/review-code",
+    "./skills/write-handoff",
+    "./skills/technical-writing",
+    "./skills/unslop",
+    "./skills/setup"
+  ]
+}
