@@ -48,8 +48,8 @@ normal step and needs no gate.
   then the code. Where there is no harness, or the change is not unit-testable, say so and
   state how you verified it instead. Do not claim a discipline you did not follow.
 - **Verify before reporting.** A change you have not run is not done.
-- **Tests passing is not the same as the change working.** Where there is a real surface to
-  exercise, call the Skill tool with "run". Where the change deserves a harder look, ask the
+- **Tests passing is not the same as the change working.** Where the change has something you
+  can run, call the Skill tool with "run". Where the change deserves a harder look, ask the
   user to run `/verify`; it is user-invoked, so you cannot fire it yourself. An inconclusive
   check is a failure, not a pass.
 

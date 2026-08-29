@@ -26,7 +26,7 @@ Send each ticket verbatim; it is already self-contained. Launch parallel tickets
 message so they actually run concurrently. Track them with TodoWrite.
 
 Do not start a sequenced ticket before its blocker has reported. If a blocker fails, the
-tickets behind it do not run: say so rather than dispatching them into a broken state.
+tickets behind it do not run. Say so rather than dispatching them into a broken state.
 
 ## Collapse the reports
 

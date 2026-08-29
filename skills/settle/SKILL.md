@@ -6,7 +6,7 @@ description: Interview the user relentlessly about a plan, decision, problem, or
 Interview the user until you reach a shared understanding. Do not start work until they
 confirm you have it.
 
-Map the subject as a **design tree**: every decision branches into the decisions that hang
+Map the subject as a **design tree**. Every decision branches into the decisions that hang
 off it. The **frontier** is every decision whose prerequisites are already settled, the
 questions you can ask now without guessing at answers you have not heard yet.
 
@@ -72,8 +72,8 @@ When the frontier is nearly empty and the shape of the answer is settled, send i
 and it costs nothing when there is nothing left to attack. Relay what came back; the critic
 proposes no fixes, so the choice of what to do about each objection is the user's.
 
-The session is done when the frontier is empty: every branch visited, nothing silently
-assumed. Summarise what was decided.
+The session is done when the frontier is empty. Every branch has been visited and nothing
+silently assumed. Summarise what was decided.
 
 Where a decision was genuinely contested, call the Skill tool with
 "oliverjwroberts-dotclaude:record-decision" before the alternative is forgotten. This is the

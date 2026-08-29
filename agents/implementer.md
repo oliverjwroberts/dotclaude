@@ -19,11 +19,11 @@ You are a subagent, so you never dispatch further subagents of your own.
 
 Your final message is your only output. Keep it short and specific.
 
-- **Built**: what you changed, by path.
-- **Verified**: the exact commands you ran and their outcome. Say plainly if something failed
+- **Built.** What you changed, by path.
+- **Verified.** The exact commands you ran and their outcome. Say plainly if something failed
   or you could not run it.
-- **Out of scope**: anything you found and deliberately left alone.
-- **Open**: decisions you had to make that the ticket did not settle.
+- **Out of scope.** Anything you found and deliberately left alone.
+- **Open.** Decisions you had to make that the ticket did not settle.
 
 Never claim something is verified when it is not. Never paste a whole file back; the point of
 sending you is that the answer comes back small.

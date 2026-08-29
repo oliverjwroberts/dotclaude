@@ -4,7 +4,7 @@ description: Configure this repo's artifact locations, tracker, and agent model 
 disable-model-invocation: true
 ---
 
-Write `docs/agents/dotclaude.md` for this repo. Everything in it is an override: every
+Write `docs/agents/dotclaude.md` for this repo. Everything in it is an override. Every
 skill in this plugin works correctly without the file, using the defaults shown below.
 
 **That path is fixed.** Every other location here is configurable, but the config itself
@@ -64,7 +64,7 @@ the table suggests.
 
 Changing a pin means editing the agent's own frontmatter in the plugin, which is read-only
 where the plugin is installed from a marketplace. So record the intent in the config file, and
-tell the user plainly: to change it for real, edit `agents/<name>.md` in the dotclaude repo
+tell the user plainly. To change it for real, edit `agents/<name>.md` in the dotclaude repo
 and push.
 
 ## 4. The lead model

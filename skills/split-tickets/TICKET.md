@@ -26,7 +26,7 @@ or an ADR by path rather than restating it.
 
 ## Not in scope
 
-The things nearby this ticket must not touch. Be explicit: this list is what keeps a parallel
+The things nearby this ticket must not touch. Be explicit. This list is what keeps a parallel
 ticket from colliding, and what stops a helpful agent from doubling the diff.
 
 ## Interfaces

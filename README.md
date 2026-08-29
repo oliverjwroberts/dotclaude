@@ -2,14 +2,17 @@
 
 My Claude Code skills and subagents, packaged as a private plugin.
 
-These are building blocks, not a workflow. Each one does a single job well: settling a
-decision, mapping a domain, writing a spec, splitting it, building it, reviewing it. You chain
-them yourself, and the chains are documented below.
+These are building blocks, not a workflow. Each one does a single job. Settle a decision, map
+a domain, write a spec, split it, build it, review it. You chain them yourself.
+
+There was a workflow layer on top of these once, a router that matched a task to a playbook
+and drove its checklist. I took it out. The blocks underneath were not solid enough to build
+on, and a router hides which one is wrong. It comes back once these hold.
 
 Inspired by [mattpocock/skills](https://github.com/mattpocock/skills),
 [pstack](https://github.com/cursor/plugins/tree/main/pstack), and
-[ai-protocol](https://github.com/dnlbox/ai-protocol). Self-contained: nothing here depends on
-those being installed.
+[ai-protocol](https://github.com/dnlbox/ai-protocol). Nothing here depends on those being
+installed.
 
 ## Install
 
@@ -154,7 +157,7 @@ frontier empties, is the only time the losing option is still cheap to write dow
 /write-handoff
 ```
 
-Any time. It is user-invoked on purpose: only you know when the session is nearly spent.
+Any time. It is user-invoked on purpose. Only you know when the session is nearly spent.
 
 ## Subagents
 
@@ -201,7 +204,7 @@ Defaults, all overridable with `/setup`:
 agent on another machine has to read it. A handoff is not, because it dies the moment it is
 picked up.
 
-Skills are stack-agnostic: they discover build and test commands from the repo rather than
+Skills are stack-agnostic. They discover build and test commands from the repo rather than
 assuming a toolchain. They reuse the bundled `/run` and `/verify`. Reviewing is deliberately
 not reused; `/review-code` owns that path so the Standards and Spec axes exist alongside
 Correctness.

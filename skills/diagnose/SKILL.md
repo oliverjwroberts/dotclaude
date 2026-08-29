@@ -22,7 +22,7 @@ a second bug wearing the first one's clothes.
 
 4. **Instrument and observe.** Add logging, run under a debugger, check the actual values.
    Confirm or kill the hypothesis. If it is dead, go back to step 3. Two dead hypotheses in a
-   row means widen the search: dispatch `scout` over the call path.
+   row means widen the search. Dispatch `scout` over the call path.
 
 5. **Fix the cause, not the symptom.** Adding a guard, a retry, or a special case means saying
    explicitly why the underlying cause cannot be fixed instead.
@@ -33,7 +33,7 @@ a second bug wearing the first one's clothes.
 7. **Leave a regression test.** Something that would have caught this. If the bug was not
    testable, say so and say what would make it testable.
 
-For a performance regression the same loop holds with one change: step 1 is a measurement
+For a performance regression the same loop holds with one change. Step 1 is a measurement
 rather than a pass or fail, and step 6 compares against the baseline you recorded before
 touching anything.
 

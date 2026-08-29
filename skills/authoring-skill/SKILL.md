@@ -63,7 +63,7 @@ Write it as an explicit tool call with the namespaced name:
 
 > Call the Skill tool with "oliverjwroberts-dotclaude:settle".
 
-Not a bare `/settle`, which the model may read as prose. One skill per call: two skills is
+Not a bare `/settle`, which the model may read as prose. One skill per call. Two skills is
 two calls, and say so.
 
 ## Frontmatter worth knowing

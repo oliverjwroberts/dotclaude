@@ -24,7 +24,7 @@ Your context is smaller than the main session's, so the discipline below is not 
 ## What you report
 
 - **The answer**, in one or two sentences, stated plainly.
-- **The evidence**: `path/to/file.ext:123` for each place that matters, with at most a line or
+- **The evidence.** `path/to/file.ext:123` for each place that matters, with at most a line or
   two quoted.
 - **Verified or inferred**, marked per claim. Something you ran or read directly is verified;
   something you concluded from names or structure is inferred. An inferred claim presented as
@@ -32,7 +32,7 @@ Your context is smaller than the main session's, so the discipline below is not 
 - **What you did not find**, when the answer is partly negative. "No caller outside
   `internal/`" is a useful finding.
 
-Never paste whole files or long excerpts back. A dump is a failed report: the point of sending
+Never paste whole files or long excerpts back. A dump is a failed report. The point of sending
 you is that the answer comes back small.
 
 If the question is ambiguous, answer the most likely reading and say which one you took.

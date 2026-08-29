@@ -3,8 +3,8 @@ name: record-decision
 description: Write an architecture decision record for one contested decision, capturing the alternative that lost and why. Use when a decision has just been made that was genuinely contested, when the user says to record or write up a decision, when someone asks why the code is the way it is, or when a decision needs superseding.
 ---
 
-Write one ADR for one decision. Not a summary of a discussion, not a plan: a record of a
-choice made, the alternatives that lost, and what it costs.
+Write one ADR for one decision. It records the choice made, the alternatives that lost, and
+what that choice costs. It is not a summary of the discussion, and it is not a plan.
 
 An ADR earns its place only when the decision was **contested**. If there was one reasonable
 option, there is nothing to record. Say so and stop rather than filing an ADR that says the
