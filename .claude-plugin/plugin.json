@@ -27,6 +27,7 @@
     "./skills/implement",
     "./skills/diagnose",
     "./skills/review-code",
+    "./skills/commit",
     "./skills/write-handoff",
     "./skills/technical-writing",
     "./skills/unslop",

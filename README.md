@@ -80,6 +80,7 @@ when a task fits.
 | `/implement`       | Builds one ticket, a batch, or a whole spec. Dispatches subagents when the work is wide.    |
 | `/diagnose`        | Red feedback loop first, then root cause, then the smallest fix at the cause.               |
 | `/review-code`     | Three parallel axes over a diff: Correctness, Standards, Spec. Reported side by side.       |
+| `/commit`          | Discovers the repo's commit convention, splits the work, writes the messages.               |
 
 ### The writing standards
 
@@ -107,7 +108,7 @@ Anything user-invoked cannot be called by another skill, which is why the list i
 ### Building a feature
 
 ```
-/settle  →  /write-spec  →  /split-tickets  →  /implement  →  /review-code
+/settle  →  /write-spec  →  /split-tickets  →  /implement  →  /review-code  →  /commit
 ```
 
 `/settle` is optional but usual, and it is the step people skip. Skipping it means the spec
@@ -121,11 +122,13 @@ someone else.
 ### Fixing a bug
 
 ```
-/diagnose  →  /implement (or a direct fix)  →  /review-code
+/diagnose  →  /implement (or a direct fix)  →  /review-code  →  /commit
 ```
 
 `/diagnose` stops at a proven root cause. If the fix is bigger than the diagnosis or touches
 several places, it hands off to `/implement`; otherwise fix it in place and review.
+
+`/commit` stops at the commit in both chains. Pushing and opening a PR stay yours.
 
 ### Understanding an unfamiliar codebase
 

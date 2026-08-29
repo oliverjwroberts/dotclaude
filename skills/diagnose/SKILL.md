@@ -54,6 +54,6 @@ touching anything.
 - Otherwise fix it here, then call the Skill tool with
   "oliverjwroberts-dotclaude:review-code".
 
-Before writing the commit message, call the Skill tool with
-"oliverjwroberts-dotclaude:technical-writing". The body says what was actually wrong, not what
-you changed.
+To record the fix in git, call the Skill tool with
+"oliverjwroberts-dotclaude:commit". The body says what was actually wrong, not what you
+changed.

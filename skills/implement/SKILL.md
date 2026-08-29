@@ -90,5 +90,5 @@ not exist, or verification cannot pass for a reason outside your scope.
   call the Skill tool with "oliverjwroberts-dotclaude:record-decision" rather than letting it
   evaporate into a report nobody rereads.
 
-Before writing commit messages or a PR body, call the Skill tool with
-"oliverjwroberts-dotclaude:technical-writing".
+When the work is ready to record in git, call the Skill tool with
+"oliverjwroberts-dotclaude:commit".
