@@ -9,7 +9,7 @@ When you create or edit a `SKILL.md` or a file under `agents/`, call the Skill t
 body length, descriptions, the invocation axis, how one skill calls another, and how to write
 `CLAUDE.md` itself. They are not repeated here.
 
-## What everything in here has to hold to
+## Rules every skill holds to
 
 - **Zero setup.** No skill may hard-require `docs/agents/dotclaude.md`.
   Read it if present, fall back to the documented defaults if not.
@@ -20,20 +20,34 @@ body length, descriptions, the invocation axis, how one skill calls another, and
   drift, and the skill is the one that gets maintained.
 - **Reuse `/run` and `/verify`.** Claude Code ships both. `/run` is model-invoked, so a skill
   calls it through the Skill tool; `/verify` is user-invoked, so a skill tells the human to run
-  it. Reviewing is deliberately not reused: `review-code` owns the whole review path.
+  it. Reviewing is deliberately not reused. `review-code` owns the whole review path, which is
+  why the Standards and Spec axes exist alongside Correctness.
+
+## Working on the plugin
+
+Install from the local checkout so edits are testable before pushing:
+
+```
+/plugin marketplace add ./
+/plugin install oliverjwroberts-dotclaude@oliverjwroberts-dotclaude
+```
+
+This replaces any registration of the same marketplace from the GitHub source rather than
+sitting alongside it. Both take the name `oliverjwroberts-dotclaude` from
+`.claude-plugin/marketplace.json`, and the last one added wins. Re-add the GitHub source to
+switch back.
+
+`SKILL.md` edits apply live. Changes under `agents/` need `/reload-plugins`, and a new skill
+directory is safest with a restart. Check the manifests with `claude plugin validate .`.
 
 ## Conventions
 
-- Artifact defaults, all overridable in `setup`: `CONTEXT.md` at the repo root, ADRs in
-  `docs/adr/`, specs in `docs/specs/`, tickets in `docs/tickets/`, handoffs in
-  `.scratch/handoffs/`, subagent reports in `.scratch/`.
 - `.scratch/` is transient and gitignored. `docs/` is durable and committed. A ticket is
   committed because an agent on another machine has to read it; a handoff is not because it
-  dies when it is picked up.
+  dies when it is picked up. The artifact defaults themselves live in `skills/setup/SKILL.md`,
+  which is the one place they are configurable.
 - Subagents live in `agents/` and pin their own `model` and `effort`. Leave `effort` off
-  `scout`: Haiku 4.5 errors on it, and Claude Code then warns and retries without it, so the
+  `scout`. Haiku 4.5 errors on it, and Claude Code then warns and retries without it, so the
   field costs a round-trip and buys nothing.
-- After editing anything under `agents/`, run `/reload-plugins`. `SKILL.md` edits are picked
-  up live.
 - Commit messages follow [Conventional Commits](https://www.conventionalcommits.org):
   `type(scope): subject`, imperative mood, under 72 characters.
