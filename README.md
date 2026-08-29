@@ -84,6 +84,7 @@ when a task fits.
 | `/diagnose`        | Red feedback loop first, then root cause, then the smallest fix at the cause.               |
 | `/review-code`     | Three parallel axes over a diff: Correctness, Standards, Spec. Reported side by side.       |
 | `/commit`          | Discovers the repo's commit convention, splits the work, writes the messages.               |
+| `/draft-pr`        | Writes the PR title and body in the repo's PR convention. Stops at the text.                |
 
 ### The writing standards
 
@@ -111,7 +112,7 @@ Anything user-invoked cannot be called by another skill, which is why the list i
 ### Building a feature
 
 ```
-/settle  →  /write-spec  →  /split-tickets  →  /implement  →  /review-code  →  /commit
+/settle  →  /write-spec  →  /split-tickets  →  /implement  →  /review-code  →  /commit  →  /draft-pr
 ```
 
 `/settle` is optional but usual, and it is the step people skip. Skipping it means the spec
@@ -125,13 +126,14 @@ someone else.
 ### Fixing a bug
 
 ```
-/diagnose  →  /implement (or a direct fix)  →  /review-code  →  /commit
+/diagnose  →  /implement (or a direct fix)  →  /review-code  →  /commit  →  /draft-pr
 ```
 
 `/diagnose` stops at a proven root cause. If the fix is bigger than the diagnosis or touches
 several places, it hands off to `/implement`; otherwise fix it in place and review.
 
-`/commit` stops at the commit in both chains. Pushing and opening a PR stay yours.
+`/commit` stops at the commit in both chains, and `/draft-pr` stops at the text. Pushing and
+opening the pull request stay yours.
 
 ### Understanding an unfamiliar codebase
 
