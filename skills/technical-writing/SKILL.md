@@ -1,6 +1,6 @@
 ---
 name: technical-writing
-description: Standard for technical documents - pick a Diataxis mode, then write for a tired reader to understand on the first pass. Use when writing or editing a README, doc, ADR, RFC, spec, task brief, PR description, or commit message.
+description: Standard for technical documents. Pick a Diátaxis mode, then write for a tired reader to understand on the first pass. Use when writing or editing a README, doc, ADR, RFC, spec, task brief, PR description, or commit message.
 ---
 
 # Technical writing

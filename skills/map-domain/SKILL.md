@@ -1,6 +1,6 @@
 ---
 name: map-domain
-description: Build and sharpen a project's domain model in CONTEXT.md - the concepts, the vocabulary, and the boundaries between them. Use when discussing what things in the codebase should be called, when a term seems to mean two things, when onboarding onto an unfamiliar repo, or when writing or editing a CONTEXT.md.
+description: Build and sharpen a project's domain model in CONTEXT.md: the concepts, the vocabulary, and the boundaries between them. Use when discussing what things in the codebase should be called, when a term seems to mean two things, when onboarding onto an unfamiliar repo, or when writing or editing a CONTEXT.md.
 ---
 
 Describe what this project is _about_: the concepts it deals in, what each one is called, and

@@ -39,13 +39,13 @@ Work in rounds. Each round:
 Format a round like this:
 
 ```
-**Q1 - <short title>**: <the question, with the options if there are discrete ones>
+**Q1. <short title>**: <the question, with the options if there are discrete ones>
 
 Recommend: <your answer, and the one-line reason>
 
 ---
 
-**Q2 - <short title>**: <question>
+**Q2. <short title>**: <question>
 
 Recommend: <answer and reason>
 ```

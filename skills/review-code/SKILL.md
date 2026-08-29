@@ -1,6 +1,6 @@
 ---
 name: review-code
-description: Review changes since a fixed point along three parallel axes - Correctness, Standards, and Spec - and report them side by side. Use when the user asks to review a branch, a PR, work in progress, or "review since X", or after a change is built and before it is merged.
+description: Review changes since a fixed point along three parallel axes and report them side by side. The axes are Correctness, Standards, and Spec. Use when the user asks to review a branch, a PR, work in progress, or "review since X", or after a change is built and before it is merged.
 ---
 
 Review a diff along three axes, run in parallel, reported separately. Findings, not fixes:
