@@ -73,11 +73,14 @@ Never run `git add -A` without reading what it picks up first. Run `git status -
 Call the Skill tool with "oliverjwroberts-dotclaude:technical-writing". Then call the Skill
 tool with "oliverjwroberts-dotclaude:unslop" on the draft.
 
-Those skills own the subject-line and body rules; do not restate them here. A commit body
-outlives every other document in the repo and nobody edits it afterwards, which is why the
-prose standards apply to it more strictly, not less.
+Those skills own the prose rules. The format rules are here. A commit body outlives every
+other document in the repo and nobody edits it afterwards, which is why the prose standards
+apply to it more strictly, not less.
 
-The body says why, not what. The diff already says what.
+- **Subject.** Imperative mood, under 72 characters, says what changes. "Add retry to the
+  upload path", not "Added retries" or "Fixes". Where the convention you found in step 1
+  differs, that convention wins.
+- **Body.** Says why, not what. The diff already says what.
 
 **Keep it short.** Most commits need a subject and two or three sentences. Write a body only
 where the reason is not already in the subject. Past roughly eight lines you are restating
