@@ -171,7 +171,11 @@ Addressable directly as `@agent-<name>`, or dispatched by the skills.
 | `critic`      | opus / xhigh   | Attacks a plan for assumptions and failure modes. Proposes no fixes.        |
 
 The discipline lives in the skills, not in these files. An agent definition holds only what a
-skill cannot set: identity, tool grant, model pin, and report format.
+skill cannot set: identity, tool grant, model and effort pins, and report format.
+
+These files are the only source of truth for model and effort. No skill and no config file
+overrides them. Change a pin by editing the agent here, or set effort for one session with
+`/effort`.
 
 ### Notes on the model pins
 

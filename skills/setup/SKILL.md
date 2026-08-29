@@ -1,6 +1,6 @@
 ---
 name: setup
-description: Configure this repo's artifact locations, tracker, and agent model policy. Run once per repo; the skills work without it.
+description: Configure this repo's artifact locations and tracker. Run once per repo; the skills work without it.
 disable-model-invocation: true
 ---
 
@@ -41,31 +41,26 @@ If they pick `github`, confirm `gh auth status` succeeds and the repo has a GitH
 either is missing, say so and leave the tracker as `local` rather than writing a setting that
 fails later.
 
-## 3. Model policy
+## 3. Agent models and effort
 
-Show the shipped defaults and ask only whether to change any of them.
+**This file does not configure either.** Each agent's frontmatter in `agents/` is the only
+source of truth, and nothing reads a model or effort setting from the config. Never write one.
+
+Raise this section only if the user asks what the agents run on.
 
 | Agent         | Model  | Effort                                 |
 | :------------ | :----- | :------------------------------------- |
 | `implementer` | sonnet | high                                   |
 | `reviewer`    | opus   | xhigh                                  |
 | `scout`       | haiku  | _(none: Haiku 4.5 rejects this field)_ |
-| `critic`      | fable  | high                                   |
+| `critic`      | opus   | xhigh                                  |
 
-Two things worth telling the user, once, if they ask about changing these:
-
-- **`critic` on Fable costs double Opus** and is allowance-capped on subscription plans. If
-  that bites, `opus` at `xhigh` is the drop-in.
-- **`implementer` on Sonnet is the pin that moves the bill** on parallel work. Move it to
-  `opus` if tickets are consistently coming back under-built.
+To change a pin, edit `agents/<name>.md` in the dotclaude repo and push. That changes it
+everywhere, so it is a plugin decision rather than a per-repo one. For one session only, the
+user runs `/effort`.
 
 `reviewer` is dispatched three times per review, once per axis, so its pin costs triple what
-the table suggests.
-
-Changing a pin means editing the agent's own frontmatter in the plugin, which is read-only
-where the plugin is installed from a marketplace. So record the intent in the config file, and
-tell the user plainly. To change it for real, edit `agents/<name>.md` in the dotclaude repo
-and push.
+the table suggests. `implementer` is the pin that moves the bill on parallel work.
 
 ## 4. The lead model
 
@@ -91,13 +86,6 @@ Tickets: docs/tickets/
 Scratch: .scratch/
 Docs: docs/
 Tracker: local
-
-## Model policy
-
-implementer: sonnet / high
-reviewer: opus / xhigh
-scout: haiku
-critic: fable / high
 ```
 
 Omit any line the user did not change from the defaults. A config file that only restates the
