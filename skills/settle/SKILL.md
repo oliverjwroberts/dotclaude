@@ -1,6 +1,7 @@
 ---
 name: settle
 description: Interview the user relentlessly about a plan, decision, problem, or idea until every branch is resolved. Use when the user says "let's settle this", "settle the plan", or "grill me", wants to think something through or stress-test an approach, asks what they are missing, or brings a problem that is not yet specified well enough to act on.
+argument-hint: "[the subject, or a spec to resume]"
 ---
 
 Interview the user until you reach a shared understanding. Do not start work until they
@@ -9,6 +10,21 @@ confirm you have it.
 Map the subject as a **design tree**. Every decision branches into the decisions that hang
 off it. The **frontier** is every decision whose prerequisites are already settled, the
 questions you can ask now without guessing at answers you have not heard yet.
+
+## Resume an earlier session
+
+When the argument is a path, a URL, or an issue number, it names a spec to continue rather
+than a subject to settle from scratch. Resume from it and skip the search below.
+
+Otherwise a subject may still have a spec from a session that ran out of room, so look for one
+before you compute the first frontier. Read `docs/agents/dotclaude.md` for the Specs location
+and the tracker; the default is `docs/specs/`. When `Tracker: github`, run
+`gh issue list --label spec --state open --json number,title` and pick by title. Read the
+candidate titles and judge them. Do not guess at search terms.
+
+Where a spec covers this subject, its `Open questions` section is the frontier. Start there.
+Treat `Approach` and `Scope` as settled and do not re-ask what they already answer. Say which
+spec you resumed from, so the user can correct you if it is the wrong one.
 
 ## The loop
 
@@ -80,3 +96,16 @@ Where a decision was genuinely contested, call the Skill tool with
 only moment the losing option is still cheap to write down.
 
 Then ask whether to proceed.
+
+## Stop without losing the frontier
+
+Sometimes the session ends with the frontier still open, because the context is filling or
+the user stops. The design tree lives only in this conversation, so it dies with the session
+unless you write it down.
+
+Before you stop, call the Skill tool with "oliverjwroberts-dotclaude:write-spec" and give it
+what the session settled. Put every unresolved frontier question in `Open questions`, one
+line each, each with the recommendation you would have made. A question recorded without its
+recommendation costs the next session a round of work to re-derive.
+
+Tell the user where the spec landed and which round they stopped on.
