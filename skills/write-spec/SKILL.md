@@ -17,6 +17,12 @@ Default `docs/specs/<kebab-slug>.md`. Read
 GitHub issue with the same body instead, and confirm `gh auth status` succeeds before trying.
 If the tracker is unreachable, write the file and say so rather than losing the work.
 
+Label the issue `spec`. Run `gh label create spec --description "A dotclaude spec" --color
+0E8A16 --force` first, because `gh issue create --label spec` fails on a repo that does not
+have the label yet. `--force` updates an existing label rather than failing, so it is safe to
+run every time. The label is what lets a later session list the specs and read their titles
+instead of guessing at search terms.
+
 Read `CONTEXT.md` if the repo has one and use the vocabulary in it. A spec that renames the
 domain's concepts forces every reader to translate.
 

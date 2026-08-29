@@ -39,6 +39,11 @@ Default `docs/tickets/NNN-kebab-slug.md`. Read
 issue per ticket instead, and confirm `gh auth status` succeeds first. Link every ticket back
 to its spec by path or URL.
 
+Label each issue `ticket`. Run `gh label create ticket --description "A dotclaude ticket"
+--color 1D76DB --force` first, because `gh issue create --label ticket` fails on a repo that
+does not have the label yet. `--force` updates an existing label rather than failing, so it is
+safe to run every time.
+
 Tickets are committed rather than kept in scratch. An agent on another machine has to be able
 to read them.
 
