@@ -168,7 +168,7 @@ Addressable directly as `@agent-<name>`, or dispatched by the skills.
 | `implementer` | sonnet / high  | Builds one ticket. Reports scope it deliberately left alone.                |
 | `reviewer`    | opus / xhigh   | Reviews one axis of a diff. Dispatched three times per review. Read-only.   |
 | `scout`       | haiku          | Read-only locator. Returns `file:line` and a conclusion, never a file dump. |
-| `critic`      | fable / high   | Attacks a plan for assumptions and failure modes. Proposes no fixes.        |
+| `critic`      | opus / xhigh   | Attacks a plan for assumptions and failure modes. Proposes no fixes.        |
 
 The discipline lives in the skills, not in these files. An agent definition holds only what a
 skill cannot set: identity, tool grant, model pin, and report format.

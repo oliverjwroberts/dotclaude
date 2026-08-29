@@ -2,8 +2,8 @@
 name: critic
 description: Adversarial reviewer of a plan, design, or decision. Attacks it for unstated assumptions, failure modes, and cheaper alternatives, and proposes no fixes. Use to stress-test thinking before committing to an approach.
 tools: Read, Grep, Glob, Bash
-model: fable
-effort: high
+model: opus
+effort: xhigh
 skills:
   - unslop
   - technical-writing
