@@ -79,6 +79,10 @@ prose standards apply to it more strictly, not less.
 
 The body says why, not what. The diff already says what.
 
+**Keep it short.** Most commits need a subject and two or three sentences. Write a body only
+where the reason is not already in the subject. Past roughly eight lines you are restating
+the diff, which the reader can already see.
+
 ## 6. Show, then commit
 
 Present the split before running anything: one line per commit, the subject, and the files in
