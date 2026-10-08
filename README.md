@@ -64,15 +64,6 @@ it.
 lost. `/settle` calls it itself when a branch was genuinely contested. That moment, right as
 the frontier empties, is the only time the losing option is still cheap to write down.
 
-### Running out of context
-
-```
-/write-handoff
-```
-
-Compacts the session into a document a fresh agent can pick up. Any time. It is user-invoked on
-purpose, because only you know when the session is nearly spent.
-
 ## Skills
 
 Skills are namespaced `/oliverjwroberts-dotclaude:<name>`, but the bare name works too unless
@@ -114,7 +105,6 @@ The model never fires these; you type them.
 
 | Skill            | Does                                          |
 | :--------------- | :-------------------------------------------- |
-| `/write-handoff` | Compacts the session for a fresh agent        |
 | `/setup`         | Sets a repo's artifact locations and tracker  |
 
 Anything user-invoked cannot be called by another skill, which is why the list is short.
@@ -160,11 +150,10 @@ Defaults, all overridable with `/setup`:
 | Scratch | `.scratch/`          |
 | Docs    | `docs/`              |
 
-Handoffs land in `<scratch>/handoffs/`, and subagent reports in `<scratch>/` itself.
+Subagent reports land in `<scratch>/`.
 
 `docs/` is committed, `.scratch/` is transient and gitignored. A ticket is committed because an
-agent on another machine has to read it. A handoff is not, because it dies the moment it is
-picked up.
+agent on another machine has to read it.
 
 Skills are stack-agnostic. They discover build and test commands from the repo rather than
 assuming a toolchain.
