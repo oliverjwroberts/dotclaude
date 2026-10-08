@@ -13,8 +13,11 @@ Establish exactly what is under review before dispatching anything, and say what
 | The user said  | Range                                                                            |
 | :------------- | :------------------------------------------------------------------------------- |
 | Nothing        | Working tree plus staged: `git diff HEAD`                                        |
-| A branch or PR | Merge-base with the default branch: `git diff $(git merge-base main HEAD)..HEAD` |
+| A branch or PR | Merge-base with the default branch: `git diff $(git merge-base <default> <branch>)..<branch>` |
 | "since X"      | `git diff X..HEAD`, where X is the commit, tag, or branch named                  |
+
+`<branch>` is the branch named, or `HEAD` for the current one. Find `<default>` with
+`git symbolic-ref --short refs/remotes/origin/HEAD`. Never assume `main`.
 
 An empty diff is a finding, not a silent pass. Say so and stop.
 
