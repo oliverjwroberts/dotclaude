@@ -43,8 +43,9 @@ directory is safest with a restart. Check the manifests with `claude plugin vali
 ## Conventions
 
 - `.scratch/` is transient and gitignored. `docs/` is durable and committed. A ticket is
-  committed because an agent on another machine has to read it. The artifact defaults
-  themselves live in `skills/setup/SKILL.md`, which is the one place they are configurable.
+  committed because an agent on another machine has to read it; a fan-out's worktrees are not
+  because they are gone when the run ends. The artifact defaults themselves live in
+  `skills/setup/SKILL.md`, which is the one place they are configurable.
 - Subagents live in `agents/` and pin their own `model` and `effort`. Leave `effort` off
   `scout`. Haiku 4.5 errors on it, and Claude Code then warns and retries without it, so the
   field costs a round-trip and buys nothing.

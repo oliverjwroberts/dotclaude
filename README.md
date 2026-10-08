@@ -11,7 +11,7 @@ review it. You chain them yourself.
 ### Building a feature
 
 ```
-/settle  →  /write-spec  →  /split-tickets  →  /implement  →  /review-code  →  /commit  →  /draft-pr
+/settle  →  /write-spec  →  /split-tickets  →  /implement
 ```
 
 `/settle` interviews you in rounds until every branch of the decision is resolved. It is
@@ -21,10 +21,12 @@ has more than one reasonable reading.
 
 `/write-spec` turns the conversation into a spec without interviewing you again.
 `/split-tickets` cuts that spec into bounded tickets and the dependency graph between them.
-`/implement` builds one ticket, a batch, or the whole spec, and dispatches subagents when the
-work is wide. `/review-code` runs three parallel axes over the diff and reports them side by
-side. `/commit` discovers the repo's commit convention and splits the work into messages.
-`/draft-pr` writes the PR title and body.
+`/implement` builds one ticket, a batch, or the whole spec on a branch. When the work is wide,
+it gives each ticket its own worktree and subagent, and merges them onto one integration
+branch. It ends by calling the rest of the chain itself. `/review-code` runs three parallel
+axes over the diff, and every finding gets fixed. `/commit` discovers the repo's commit
+convention and splits the work into messages. `/raise-pr` pushes the branch and opens a draft
+PR, so the run ends with something to review.
 
 For a small change, collapse the middle: `/settle` then `/implement`. `/write-spec` and
 `/split-tickets` earn their place once the work outlives one session or gets handed to someone
@@ -33,15 +35,24 @@ else.
 ### Fixing a bug
 
 ```
-/diagnose  →  /implement (or a direct fix)  →  /review-code  →  /commit  →  /draft-pr
+/diagnose  →  /implement (or a direct fix)  →  /review-code  →  /commit  →  /raise-pr
 ```
 
 `/diagnose` gets to a red feedback loop first, then the root cause, then the smallest fix at
 the cause. It stops at a proven cause. If the fix is bigger than the diagnosis or touches
 several places, hand it to `/implement`; otherwise fix it in place and review.
 
-`/commit` stops at the commit in both chains, and `/draft-pr` stops at the text. Pushing and
-opening the pull request stay yours.
+`/commit` never pushes. `/raise-pr` pushes and opens a draft only when you ask it to raise a
+PR, or when `/implement` finishes work that came from a spec or a ticket. Asked only for a
+description, it returns the text. A fix that `/diagnose` hands to `/implement` stops at the
+commit. Marking the PR ready and merging it stay yours.
+
+### Leaving it running
+
+A fan-out runs unattended once you approve its frame, but only if nothing stops to ask you.
+Run it in a permission mode that allows `git`, `gh`, and the repo's install and test
+commands, such as auto mode or an allowlist in `.claude/settings.json`. In a run nobody is
+watching, `/implement` skips its request for `/verify`, and the PR says so.
 
 ### Landing in an unfamiliar repo
 
@@ -85,7 +96,7 @@ when a task fits.
 | `/diagnose`        | Root cause, then the smallest fix at it       |
 | `/review-code`     | Three parallel axes over a diff               |
 | `/commit`          | Splits the work and writes the messages       |
-| `/draft-pr`        | The PR title and body, and nothing past it    |
+| `/raise-pr`        | The PR title and body, opened as a draft      |
 
 ### The writing standards
 
@@ -150,10 +161,12 @@ Defaults, all overridable with `/setup`:
 | Scratch | `.scratch/`          |
 | Docs    | `docs/`              |
 
-Subagent reports land in `<scratch>/`.
+A fan-out puts its worktrees in `<scratch>/worktrees/` and its subagent reports in
+`<scratch>/implement/`.
 
 `docs/` is committed, `.scratch/` is transient and gitignored. A ticket is committed because an
-agent on another machine has to read it.
+agent on another machine has to read it. A worktree or a worker's report is not, because it is
+gone when the run ends.
 
 Skills are stack-agnostic. They discover build and test commands from the repo rather than
 assuming a toolchain.
@@ -186,6 +199,7 @@ replaces this registration rather than sitting alongside it.
 ## Inspired by
 
 [mattpocock/skills](https://github.com/mattpocock/skills),
-[pstack](https://github.com/cursor/plugins/tree/main/pstack), and
+[pstack](https://github.com/cursor/plugins/tree/main/pstack),
+[humanlayer/skills](https://github.com/humanlayer/skills), and
 [ai-protocol](https://github.com/dnlbox/ai-protocol). Nothing here depends on those being
 installed.

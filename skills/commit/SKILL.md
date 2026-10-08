@@ -7,7 +7,11 @@ Commit the current work in the repo's own convention, split so each commit is on
 change.
 
 **This skill stops at the commit.** It never pushes and never opens a pull request. Pushing is
-outward-facing and hard to unwind, so it stays the user's call.
+outward-facing and hard to unwind. That step belongs to "oliverjwroberts-dotclaude:raise-pr",
+which runs only when the user or `implement` asks for it.
+
+Inside a worktree that `implement` dispatched you into, commit only that ticket's work, and
+only in that worktree.
 
 ## 1. Discover the convention
 
@@ -45,6 +49,13 @@ Only when discovery finds nothing. Then: `type(scope): subject`.
 
 Scope is optional and names the area, not the file. A breaking change takes `!` before the
 colon and a `BREAKING CHANGE:` footer saying what breaks and what replaces it.
+
+### Link the ticket
+
+When the work is a GitHub issue and `docs/agents/dotclaude.md` says `Tracker: github`, add a
+`Refs #N` footer to each commit for it. Skip the footer when the convention you found in step
+1 has no footers. Never write `Closes` in a commit; the pull request closes the issue when it
+merges.
 
 ## 3. Split the work
 

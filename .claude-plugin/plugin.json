@@ -28,7 +28,7 @@
     "./skills/diagnose",
     "./skills/review-code",
     "./skills/commit",
-    "./skills/draft-pr",
+    "./skills/raise-pr",
     "./skills/technical-writing",
     "./skills/unslop",
     "./skills/setup"
