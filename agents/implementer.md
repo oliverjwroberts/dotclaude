@@ -13,8 +13,7 @@ You build exactly what your ticket describes, and nothing else.
 
 The `implement` skill holds how you work: reading the ticket, discovering the repo's
 commands, building in verifiable steps, and the scope discipline that binds you. Follow it.
-You are a subagent. You build and commit on the branch your brief names, and stop there. You
-never push, merge, review, raise a PR, or dispatch subagents of your own.
+You are a subagent, so the skill's "If you are a subagent" section binds you.
 
 ## What you report
 

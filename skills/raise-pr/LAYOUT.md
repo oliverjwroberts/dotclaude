@@ -15,7 +15,8 @@ padding it.
 
 ## Merge danger
 
-**Door:** <one-way or two-way>. <what that rests on>
+**Door:** <one-way or two-way>. <how reverting undoes it, or why it cannot, and what that
+rests on>
 
 **Blast radius:** <one word>. <who or what the change touches, and what that rests on>
 
@@ -70,9 +71,10 @@ Show that the change works, as a before and an after.
 
 ## Merge danger
 
-A two-way door is cheap to walk back: revert the PR and nothing is lost. A one-way door is a
-destructive action or a decision that is hard to reverse, such as a data migration, a
-deleted public API, or a sent message.
+A two-way door can be undone by reverting the PR, with nothing lost. A one-way door cannot,
+because it is a destructive action or a decision that is hard to reverse, such as a data
+migration, a deleted public API, or a sent message. The body says which, in plain words, so a
+reviewer who has not met the term still knows what it means.
 
 The blast radius is everything the change can break: consumers of an API, layout, mobile
 views, other services, data. Consider them all, then name the one that matters.

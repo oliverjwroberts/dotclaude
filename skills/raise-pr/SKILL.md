@@ -1,7 +1,7 @@
 ---
 name: raise-pr
 description: Write a pull request's title and body in the repo's own PR convention, and open it as a draft when asked to raise it. Use when the user asks to raise, open, or create a PR, draft a PR description, fill in a PR template, or asks what to put in the pull request body.
-argument-hint: "[open] [branch]"
+argument-hint: "[open] [branch] [base]"
 ---
 
 Write the title and body for a pull request covering the work on a branch. Open it as a draft
@@ -18,7 +18,8 @@ only when the mode below says to.
 Decide from the argument and the current message only. An earlier run of `implement` in this
 session does not make this call Open.
 
-The branch is the one named in the argument, or the current branch when none is named.
+The branch is the one named in the argument, or the current branch when none is named. The
+base is the second branch named, or the repo's default branch.
 
 **Text mode never pushes and never runs `gh pr create`.** **Open mode stops at a draft PR.**
 It never marks the PR ready, requests reviewers, or merges. Those stay the user's call.
@@ -41,9 +42,12 @@ Say which convention you found and what you inferred it from.
 
 ## 2. Read the change
 
-Find the base branch rather than assuming `main`. Try `git symbolic-ref --short
-refs/remotes/origin/HEAD`, and fall back to what the repo's open PRs target. Then read
-`git log <base>..<branch>` and `git diff <base>...<branch> --stat`.
+Find the default branch, `<default>`, with `git symbolic-ref --short refs/remotes/origin/HEAD`.
+When that fails, use `gh repo view --json defaultBranchRef -q .defaultBranchRef.name`. With no
+remote, use whichever of `main` and `master` exists. Never assume `main`.
+
+Then read `git log <base>..<branch>` and `git diff <base>...<branch> --stat`. When the log is
+empty, there is nothing to raise. Say so and stop.
 
 Where the commits or the branch name point at a spec, a ticket, an ADR, or an issue, read it.
 Cite it by path or URL. Do not restate it; a restated copy goes stale the moment the original
@@ -84,5 +88,7 @@ In Open mode:
 3. Write the body to a file in the scratch directory, `.scratch/` unless
    `docs/agents/dotclaude.md` names another.
 4. Run `git push -u origin <branch>`, then
-   `gh pr create --draft --head <branch> --title "<title>" --body-file <file>`.
-5. Show the PR URL, and say it is a draft that nobody has reviewed.
+   `gh pr create --draft --base <base> --head <branch> --title "<title>" --body-file <file>`.
+5. When `gh pr create` fails, do not retry it without `--draft`. Say that the branch is
+   pushed and no PR exists, quote the error, and show the text.
+6. Show the PR URL, and say it is a draft that nobody has reviewed.

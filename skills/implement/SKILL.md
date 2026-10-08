@@ -42,8 +42,8 @@ ticket is a normal step and needs no gate.
 
 **Work on a branch, every run.** When the current branch is the repo's default branch,
 create one named after the ticket or the spec, following the branch names already in
-`git branch -a`. When the current branch is not the default, build on it. Fan-out creates its
-own integration branch from here.
+`git branch -a`. When the current branch is not the default, build on it. A fan-out skips
+this step. Its integration branch, named after the spec, is the run's branch.
 
 ## 3. Build
 
@@ -63,8 +63,8 @@ own integration branch from here.
 - **Tests passing is not the same as the change working.** Where the change has something you
   can run, call the Skill tool with "run". Where the change deserves a harder look and the
   user is watching, ask them to run `/verify`; it is user-invoked, so you cannot fire it
-  yourself. In a fan-out run, or when the user said they would be away, do not wait for it.
-  Record that `/verify` was not run. An inconclusive check is a failure, not a pass.
+  yourself. A fan-out is built to run unattended, so in a fan-out, or when the user said they
+  would be away, skip the request. Record that `/verify` was not run. An inconclusive check is a failure, not a pass.
 
 ## Behaviour-preserving changes
 
@@ -107,16 +107,17 @@ Then, in order:
    "oliverjwroberts-dotclaude:commit".
 2. **Review the combined change.** Call the Skill tool with
    "oliverjwroberts-dotclaude:review-code" on the branch.
-3. **Fix every finding** in this run. Do not call `implement` again for it. Fix them here, or
-   in one `implementer` when there are many. A finding too large for one fix pass becomes a
+3. **Fix every finding** in this run, in one `implementer`. Do not call `implement` again for
+   it. A finding too large for one fix pass becomes a
    ticket in the format of [TICKET.md](../split-tickets/TICKET.md), filed in the tracker.
    Commit the fixes.
-4. **Raise the PR**, only when the work came from a spec or a ticket and the branch has no
-   open PR. Call the Skill tool with "oliverjwroberts-dotclaude:raise-pr" and the argument
-   `open <branch>`. Pass it which tickets merged, which are blocked, which findings became
-   tickets, and which checks ran.
+4. **Raise the PR**, only when the work came from a spec or a ticket, the branch has commits
+   ahead of its base, and the branch has no open PR. Call the Skill tool with
+   "oliverjwroberts-dotclaude:raise-pr" and the argument `open <branch> <base>`. The base is
+   the branch the run started from, or the default branch when this run created the branch
+   from it. Pass it which tickets merged, which are blocked, which findings became tickets,
+   and which checks ran.
 
-Some runs stop early. When the work is a fix that `review-code` asked for, stop after step 1,
-because that review already ran. When the work came from `diagnose`, or the branch already has
-an open PR, stop after step 3. In each case, say that nothing has been pushed, and that
-`git push` updates an existing PR.
+Some runs stop after step 1: a fix that `review-code` or `diagnose` asked for, and any run on
+a branch that already has an open PR. The skill that asked for the fix owns its review. Say
+that nothing has been pushed, and that `git push` updates an existing PR.
