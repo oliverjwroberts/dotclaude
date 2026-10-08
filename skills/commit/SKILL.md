@@ -54,7 +54,7 @@ colon and a `BREAKING CHANGE:` footer saying what breaks and what replaces it.
 
 When the work is a GitHub issue and `docs/agents/dotclaude.md` says `Tracker: github`, add a
 `Refs #N` footer to each commit for it. Skip the footer when the convention you found in step
-1 has no footers. Never write `Closes` in a commit; the pull request closes the issue when it
+1 has no footers. Never write `Closes` in a commit. The pull request closes the issue when it
 merges.
 
 ## 3. Split the work
